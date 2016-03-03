@@ -71,4 +71,20 @@ public class MainActivity extends AppCompatActivity {
 
         reverseButton.setEnabled(true);
     }
+
+    public void didTapReverseButton(View view) {
+        EditText greetEditText =
+                (EditText) findViewById(R.id.greet_edit_text);
+
+        String name = greetEditText.getText().toString();
+        String greeting = String.format("Hello, %s!", name);
+        StringBuilder reverseString = new StringBuilder(greeting);
+        String reverseGreeting = reverseString.reverse().toString();
+
+
+        TextView messageTextView =
+                (TextView) findViewById(R.id.message_text_view);
+
+        messageTextView.setText(reverseGreeting);
+    }
 }
