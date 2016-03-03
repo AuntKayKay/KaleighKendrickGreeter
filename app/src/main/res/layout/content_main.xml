@@ -37,4 +37,16 @@
         android:gravity="center"
         android:textSize="30sp"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="REVERSE"
+        android:id="@+id/reverseButton"
+        android:layout_below="@+id/message_text_view"
+        android:layout_alignRight="@+id/greet_button"
+        android:layout_alignEnd="@+id/greet_button"
+        android:layout_alignLeft="@+id/greet_button"
+        android:layout_alignStart="@+id/greet_button"
+        android:enabled="false" />
+
 </RelativeLayout>

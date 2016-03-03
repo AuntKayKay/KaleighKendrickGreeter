@@ -6,9 +6,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-/**
- * Created by Kaleigh on 3/1/2016.
- */
 public class MainActivityTests extends ActivityInstrumentationTestCase2<MainActivity> {
 
     public MainActivityTests() {
@@ -57,4 +54,14 @@ public class MainActivityTests extends ActivityInstrumentationTestCase2<MainActi
         String actualText = greetMessage.getText().toString();
         assertEquals("Hello, Jake!", actualText);
     }
+
+        //Checks that the reverse button is disabled when the activity starts.
+        public void testReverseDisabled() {
+            MainActivity activity = getActivity();
+            Button reverseButton =
+                    (Button) activity.findViewById(R.id.reverseButton);
+
+            assertEquals(false, reverseButton.isEnabled());
+        }
+
 }
