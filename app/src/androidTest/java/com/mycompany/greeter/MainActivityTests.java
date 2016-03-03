@@ -20,32 +20,7 @@ public class MainActivityTests extends ActivityInstrumentationTestCase2<MainActi
 
     public void testGreet() {
         MainActivity activity = getActivity();
-
-        // Type name in text input
-        // ----------------------
-
-        final EditText nameEditText =
-                (EditText) activity.findViewById(R.id.greet_edit_text);
-
-        // Send string input value
-        getInstrumentation().runOnMainSync(new Runnable() {
-            @Override
-            public void run() {
-                nameEditText.requestFocus();
-            }
-        });
-
-        getInstrumentation().waitForIdleSync();
-        getInstrumentation().sendStringSync("Jake");
-        getInstrumentation().waitForIdleSync();
-
-        // Tap "Greet" button
-        // ----------------------
-
-        Button greetButton =
-                (Button) activity.findViewById(R.id.greet_button);
-
-        TouchUtils.clickView(this, greetButton);
+        this.greetingHelper();
 
         // Verify greet message
         // ----------------------
@@ -82,32 +57,7 @@ public class MainActivityTests extends ActivityInstrumentationTestCase2<MainActi
         //Checks that the text in the TextView is reversed after both buttons have been clicked.
         public void testReverse() {
             MainActivity activity = getActivity();
-
-            // Type name in text input
-            // ----------------------
-
-            final EditText nameEditText =
-                    (EditText) activity.findViewById(R.id.greet_edit_text);
-
-            // Send string input value
-            getInstrumentation().runOnMainSync(new Runnable() {
-                @Override
-                public void run() {
-                    nameEditText.requestFocus();
-                }
-            });
-
-            getInstrumentation().waitForIdleSync();
-            getInstrumentation().sendStringSync("Jake");
-            getInstrumentation().waitForIdleSync();
-
-            // Tap "Greet" button
-            // ----------------------
-
-            Button greetButton =
-                    (Button) activity.findViewById(R.id.greet_button);
-
-            TouchUtils.clickView(this, greetButton);
+            this.greetingHelper();
 
             //Tap "Reverse" button
             // ----------------------
@@ -124,4 +74,36 @@ public class MainActivityTests extends ActivityInstrumentationTestCase2<MainActi
             String actualText = greetMessage.getText().toString();
             assertEquals("!ekaJ ,olleH", actualText);
         }
+
+    //Gets the input, taps the "Greet" button.
+    private void greetingHelper(){
+        MainActivity activity = getActivity();
+
+        // Type name in text input
+        // ----------------------
+
+        final EditText nameEditText =
+                (EditText) activity.findViewById(R.id.greet_edit_text);
+
+        // Send string input value
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                nameEditText.requestFocus();
+            }
+        });
+
+        getInstrumentation().waitForIdleSync();
+        getInstrumentation().sendStringSync("Jake");
+        getInstrumentation().waitForIdleSync();
+
+        // Tap "Greet" button
+        // ----------------------
+
+        Button greetButton =
+                (Button) activity.findViewById(R.id.greet_button);
+
+        TouchUtils.clickView(this, greetButton);
+
+    }
 }
